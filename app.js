@@ -5,6 +5,31 @@ const outPutElement = document.querySelector('#output')
 const inputElement = document.querySelector('input')
 const historyElement = document.querySelector('.history')
 const buttonElement = document.querySelector('button')
+const submitElement = document.querySelector('#submit')
+
+submitButton.disabled = true
+
+inputElement.addEventListener("input", function() {
+    // Check the condition to enable or disable the button
+    if (inputElement.value === "") {
+        submitButton.disabled = true;
+        submitButton.classList.add("disabled");
+    } else {
+        submitButton.disabled = false;
+        submitButton.classList.remove("disabled");
+    }
+  });
+
+inputElement.addEventListener("keydown", function(event) {
+    // Check if the "Enter" key was pressed
+    if (event.keyCode === 13) {
+      // Cancel the default action of the event
+      event.preventDefault();
+  
+      // Trigger a click on the button element
+      submitButton.click();
+    }
+  });
 
 function changeInput(value){
     const inputElement = document.querySelector('input')
@@ -12,7 +37,6 @@ function changeInput(value){
 }
 
 async function getMessage(){
-    console.log('clicked')
     const options = {
         method:'POST',
         headers:{
@@ -44,7 +68,10 @@ async function getMessage(){
     }
 }
 
+
+
 submitButton.addEventListener('click',getMessage)
+
 function clearInput(){
     inputElement.value = ''
     outPutElement.textContent = ''

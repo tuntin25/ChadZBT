@@ -7,7 +7,8 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #343541;
+    /* background-color: #343541; */
+    background-color: rgba(52,53,65);
     display: flex;
 }
 
@@ -73,19 +74,35 @@ input:focus{
 }
 
 .input-container #submit{
+    border: transparent;
+    background-color: transparent;
     position: absolute;
+    border-radius: 5px;
     right: 0;
     bottom: 15px;
     cursor: pointer;
 }
 
-button{
+#submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
+#submit:hover:not(:disabled){
+    opacity: 0.8;
+}
+
+#new-chat{
     border: solid 0.5px rgba(255,255,255,0.5);
     background-color: transparent;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
     cursor: pointer;
+}
+#new-chat:hover{
+    opacity: 0.8;
 }
 
 nav{
